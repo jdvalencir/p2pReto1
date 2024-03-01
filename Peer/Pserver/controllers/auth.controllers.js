@@ -1,5 +1,11 @@
+import axios from "axios";
+
 function login(req, res) {
-    res.send('Login');
+    const { username } = req.body;
+    if (!username) {
+        return res.status(400).send('Username is required');
+    }
+    return res.status(200).send('Login success');
 }
 
 function logout(req, res) {

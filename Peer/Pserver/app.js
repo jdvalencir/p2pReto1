@@ -19,6 +19,7 @@ app.use(express.json());
 // Routes
 
 app.use('/api/v1/auth', AuthRoutes);
+app.use('/api/grpc')
 
 app.get('/', (req, res) => {
   res.status(200).send('PServer is up and running');

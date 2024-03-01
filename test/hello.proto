@@ -1,0 +1,21 @@
+// hello.proto
+
+syntax = "proto3"; // Especifica que estamos utilizando la sintaxis de Protocol Buffers versión 3
+
+package helloworld; // Define el paquete. Es común que el nombre del paquete sea el mismo que el del servicio.
+
+// Define un servicio con al menos un método RPC
+service Greeter {
+  // Define un método RPC con su solicitud y respuesta
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// Define el mensaje para la solicitud
+message HelloRequest {
+  string name = 1; // El campo 'name' será utilizado para enviar un nombre al servidor
+}
+
+// Define el mensaje para la respuesta
+message HelloReply {
+  string message = 1; // El campo 'message' contendrá la respuesta del servidor
+}
