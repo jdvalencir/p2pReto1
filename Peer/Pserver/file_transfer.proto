@@ -11,7 +11,7 @@ service FileTransferService {
 // Información del archivo para subir/descargar
 message FileInfo {
   string name = 1;
-  string content = 2; // Contenido del archivo simulado como string
+  // string content = 2; // Contenido del archivo simulado como string
 }
 
 // Para solicitar la descarga de un archivo

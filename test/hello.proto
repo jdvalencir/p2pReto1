@@ -1,21 +1,26 @@
-// hello.proto
+syntax = "proto3";
 
-syntax = "proto3"; // Especifica que estamos utilizando la sintaxis de Protocol Buffers versión 3
+package filetransfer;
 
-package helloworld; // Define el paquete. Es común que el nombre del paquete sea el mismo que el del servicio.
-
-// Define un servicio con al menos un método RPC
-service Greeter {
-  // Define un método RPC con su solicitud y respuesta
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+// El servicio que define las operaciones de subida y descarga de archivos
+service FileTransferService {
+  rpc UploadFile(FileInfo) returns (TransferStatus) {}
+  rpc DownloadFile(FileRequest) returns (FileInfo) {}
 }
 
-// Define el mensaje para la solicitud
-message HelloRequest {
-  string name = 1; // El campo 'name' será utilizado para enviar un nombre al servidor
+// Información del archivo para subir/descargar
+message FileInfo {
+  string name = 1;
+  string content = 2; // Contenido del archivo simulado como string
 }
 
-// Define el mensaje para la respuesta
-message HelloReply {
-  string message = 1; // El campo 'message' contendrá la respuesta del servidor
+// Para solicitar la descarga de un archivo
+message FileRequest {
+  string name = 1;
+}
+
+// Estado de la transferencia de archivos
+message TransferStatus {
+  string message = 1;
+  bool success = 2;
 }

@@ -14,16 +14,20 @@ const protoDefinition = protoLoader.loadSync(
   }
 );
 
-const helloProto = grpc.loadPackageDefinition(protoDefinition).helloworld;
+const filetransfer = grpc.loadPackageDefinition(protoDefinition).filetransfer;
 
 const server = new grpc.Server();
 
 // Implementa el servicio gRPC
-server.addService(helloProto.Greeter.service, {
-  sayHello: (call, callback) => {
-    callback(null, { message: 'Hola Mundo desde gRPC!' });
+server.addService(filetransfer.FileTransferService.service, {
+  UploadFile: (call, callback) => {
+    callback(null, { message: `Archivo recibido: ${call.request.name}`, success: 1  });
+  },
+  DownloadFile: (call, callback) => {
+    callback(null, { name: call.request.name, content: "Él más god" });
   }
 });
+
 
 function start() {
   console.log("hola")
