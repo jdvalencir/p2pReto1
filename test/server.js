@@ -8,4 +8,4 @@ expressApp.listen(PORT, () => {
   console.log(`REST API running on port: ${PORT}`);
 });
 
-grpcServer.start();
+grpcServer.sta();

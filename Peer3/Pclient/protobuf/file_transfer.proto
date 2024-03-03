@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package fileTransfer;
+
+// El servicio que define las operaciones de subida y descarga de archivos
+service FileTransferService {
+  rpc UploadFile(FileRequest) returns (TransferStatus) {}
+  rpc DownloadFile(FileRequest) returns (FileInfo) {}
+}
+
+// Información del archivo para subir/descargar
+message FileInfo {
+  string name = 1;
+  string message = 2; 
+  bool success = 3;
+}
+
+// Para solicitar la descarga de un archivo
+message FileRequest {
+  string name = 1;
+}
+
+// Estado de la transferencia de archivos
+message TransferStatus {
+  string name = 1 ;
+  string message = 2;
+  bool success = 3;
+}
